@@ -1,0 +1,39 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "esi-r2d7"
+version = "0.1.0"
+description = "Async client for ESI R2D7 RS-232 blind controllers, built on serialx"
+readme = "README.md"
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+requires-python = ">=3.12"
+authors = [{ name = "David Finkelstein" }]
+keywords = ["esi", "r2d7", "blinds", "shades", "rs232", "serial", "home-assistant"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Framework :: AsyncIO",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Topic :: Home Automation",
+    "Typing :: Typed",
+]
+dependencies = ["serialx>=1.15.1"]
+
+[project.optional-dependencies]
+test = ["pytest>=8", "pytest-asyncio>=0.24"]
+
+[project.urls]
+Homepage = "https://github.com/davidfi01/esi-r2d7"
+Issues = "https://github.com/davidfi01/esi-r2d7/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/esi_r2d7"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+testpaths = ["tests"]
